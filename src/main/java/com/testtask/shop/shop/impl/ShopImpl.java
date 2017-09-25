@@ -80,7 +80,7 @@ public class ShopImpl implements Shop{
             }
 
             this.drinkSoldsInfo.put(drink.getDrinkName(), info);
-            System.out.println("\"" + drink.getDrinkName() + "\" буде куплено у кількості " + quantity + " що коштуватиме " + price );
+            System.out.println("\"" + drink.getDrinkName() + "\" буде куплено у кількості " + quantity + " що коштуватиме " + String.format("%.2f",price ));
         } else {
             System.out.println("\"" + drink.getDrinkName() + "\" нажаль немає потрібної кількості " + quantity);
         }
@@ -130,14 +130,14 @@ public class ShopImpl implements Shop{
             System.out.println("\t\tПродано " + info.getSoldQuantity() );
             System.out.println("\t\tДозакуплено " + info.getRebuyQuantity());
             System.out.println("\t\tПри закупочній ціні + " + info.getDrinkPurchasePrice());
-            System.out.println("\t\tПрибуток від продаж " + info.getPriceSum());
+            System.out.println("\t\tПрибуток від продаж " + String.format("%.2f",info.getPriceSum()));
             soldsSum += info.getPriceSum();
             drinkCost += info.getSoldQuantity() * info.getDrinkPurchasePrice();
             rebuySum += info.getRebuyQuantity() * info.getDrinkPurchasePrice();
         }
-        System.out.println("Прибуток магазину (сума продаж - собівартість проданого товару) = " + soldsSum + " - " + drinkCost +
-                " = " + (soldsSum - drinkCost));
-        System.out.println("Витрати на дозакупку товару " + rebuySum);
+        System.out.println("Прибуток магазину (сума продаж - собівартість проданого товару) = " + String.format("%.2f",soldsSum) + " - " + String.format("%.2f",drinkCost) +
+                " = " + String.format("%.2f",(soldsSum - drinkCost)));
+        System.out.println("Витрати на дозакупку товару " + String.format("%.2f",rebuySum));
         System.out.println("------------------------------------------------------------");
     }
 
